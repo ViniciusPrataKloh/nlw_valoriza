@@ -6,13 +6,13 @@ export function ensureAdmin(
   next: NextFunction
 ) {
   // Verifica permissao de usuario
-  const admin = false;
+  const admin = true;
 
   if (admin) {
     return next();
   }
 
   return reponse.status(401).json({
-    error: "Unathorized",
+    error: "Unauthorized",
   });
 }
