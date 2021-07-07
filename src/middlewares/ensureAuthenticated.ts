@@ -22,15 +22,13 @@ export function ensureAuthenticated(
   // Verificar se token é válido 
   const [, token] = authToken.split(" ");
 
+  // Recuperar informações do usuário
   try {
     const { sub } = verify(token, "1709560334811baa8925670be3f032b2") as IPayLoad;
     request.user_id = sub;
   } catch (err) {
     response.status(401).end();
   }
-
-  // Recuperar informações do usuário
-
 
   return next();
 }
